@@ -7,11 +7,15 @@ import React from 'react';
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   const pca = new PublicClientApplication(msalConfig);
   return (
-    <div className="flex h-screen">
-        <MsalProvider instance={pca}>
-          <main className="bg-slate-50 flex-1 overflow-auto">{children}</main>
-        </MsalProvider>
-    </div>
+    <html>
+      <body>
+        <div className="flex h-screen">
+          <MsalProvider instance={pca}>
+            <main className="bg-slate-50 flex-1 overflow-auto">{children}</main>
+          </MsalProvider>
+        </div>
+      </body>
+    </html>
   );
 };
 

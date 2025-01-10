@@ -21,18 +21,17 @@ export interface User {
   sub: string;
   familyName: string;
   givenName: string;
-  email: string;
 }
 
 const useCurrentUser = (): User | null | undefined => {
   const { accounts } = useMsal();
   if (accounts.length > 0) {
     const account = accounts[0] as Account;
+    console.log(account)
     const user: User = {
       sub: account.idTokenClaims?.sub,
       familyName: account.idTokenClaims?.family_name,
-      givenName: account.idTokenClaims?.given_name,
-      email: account.idTokenClaims?.emails[0],
+      givenName: account.idTokenClaims?.given_name
     };
     return user;
   }
